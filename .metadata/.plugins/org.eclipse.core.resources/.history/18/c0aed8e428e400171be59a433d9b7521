@@ -1,0 +1,7 @@
+package br.com.springmc.domain;
+
+public class Estado {
+
+	private Integer id;
+	private String nome;
+}

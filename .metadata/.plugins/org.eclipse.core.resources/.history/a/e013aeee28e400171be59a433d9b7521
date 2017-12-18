@@ -1,0 +1,8 @@
+package br.com.springmc.domain;
+
+public class Cidade {
+
+	private Integer id;
+	private String nome;
+	private Estado estado.;
+}

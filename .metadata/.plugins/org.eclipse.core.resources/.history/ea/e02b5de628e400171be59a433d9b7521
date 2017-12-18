@@ -1,0 +1,10 @@
+package br.com.springmc.domain;
+
+import java.util.ArrayList;
+
+public class Estado {
+
+	private Integer id;
+	private String nome;
+	private List<Cidade> cidades = new ArrayList<>();
+}
