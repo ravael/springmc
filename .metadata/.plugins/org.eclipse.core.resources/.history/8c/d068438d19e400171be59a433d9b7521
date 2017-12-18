@@ -14,15 +14,13 @@ import br.com.springmc.domain.Categoria;
 public class CategoriaController {
 
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Categoria> listar() {
+	public String listar() {
 		
-		Categoria categoria1 = new Categoria(1,"Informática");
-		Categoria categoria2 = new Categoria(2, "Escritório");
+		Categoria categoria1 = new Categoria(1,"informatica");
+		Categoria categoria2 = new Categoria(2, "Escritorio");
 		
 		List<Categoria> lista = new ArrayList<>();
-		lista.add(categoria1);
-		lista.add(categoria2);
 		
-		return lista;
+		return "Serviço funcionando";
 	}
 }

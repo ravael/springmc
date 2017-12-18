@@ -1,8 +1,5 @@
 package br.com.springmc.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,15 +11,11 @@ import br.com.springmc.domain.Categoria;
 public class CategoriaController {
 
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Categoria> listar() {
+	public String listar() {
 		
-		Categoria categoria1 = new Categoria(1,"Informática");
-		Categoria categoria2 = new Categoria(2, "Escritório");
+		Categoria categoria1 = new Categoria(1,"informatica");
+		Categoria categoria2 = new Categoria(2, "Escritorio");
 		
-		List<Categoria> lista = new ArrayList<>();
-		lista.add(categoria1);
-		lista.add(categoria2);
-		
-		return lista;
+		return "Serviço funcionando";
 	}
 }
