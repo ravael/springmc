@@ -1,0 +1,13 @@
+package br.com.springmc.services;
+
+import org.springframework.stereotype.Service;
+
+import br.com.springmc.domain.Categoria;
+
+@Service
+public class CategoriaService {
+
+	public Categoria listaCategorio() {
+		return null;
+	}
+}

@@ -1,0 +1,6 @@
+package br.com.springmc.services;
+
+@Service
+public class CategoriaService {
+
+}

@@ -1,0 +1,6 @@
+package br.com.springmc.repositories;
+
+@Repository
+public class CategoriaRepository {
+
+}
