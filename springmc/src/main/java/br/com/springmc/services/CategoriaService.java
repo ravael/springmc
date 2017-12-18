@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.springmc.domain.Categoria;
 import br.com.springmc.repositories.CategoriaRepository;
+import br.com.springmc.services.exception.CategoriaException;
 
 @Service
 public class CategoriaService {
@@ -13,6 +14,11 @@ public class CategoriaService {
 	private CategoriaRepository categoriaRespository;
 	
 	public Categoria listaCategorio(Integer idCategoria) {
+		Categoria categoria = categoriaRespository.findOne(idCategoria);
+		
+		if(categoria == null) {
+			throw new CategoriaException("Categoria não encontrada");
+		}
 		return categoriaRespository.findOne(idCategoria);
 	}
 }

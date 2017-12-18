@@ -1,0 +1,8 @@
+package br.com.springmc.controller.handlers;
+
+public class StandardError {
+
+	private Integer status;
+	private String msg;
+	private Long time;
+}
