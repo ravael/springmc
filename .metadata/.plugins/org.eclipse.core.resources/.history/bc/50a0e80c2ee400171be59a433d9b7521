@@ -1,0 +1,14 @@
+package br.com.springmc.domain;
+
+import br.com.springmc.domain.enums.TipoCliente;
+
+public class Cliente {
+
+	private Integer id;
+	private String nome;
+	private String email;
+	private String cpfCnpj;
+	private TipoCliente tipo;
+	
+	private List<Endereco> enderecos;
+}

@@ -1,0 +1,8 @@
+package br.com.springmc.domain.enums;
+
+public enum TipoCliente {
+
+		PESSOAFISICA(1,"Pessoa Física"),
+		PESSOAJURIDICA(2,"Pessoa Jurídica");
+	
+}
