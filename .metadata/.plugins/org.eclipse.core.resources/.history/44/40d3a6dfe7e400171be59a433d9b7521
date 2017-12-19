@@ -3,7 +3,6 @@ package br.com.springmc.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.Ssl.ClientAuth;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,11 +30,9 @@ public class ClienteService {
 		return cliente;
 	}
 	
-	public Cliente update(Cliente cliente) {
-		Cliente resultado = find(cliente.getId());
-		resultado.setEmail(cliente.getEmail());
-		resultado.setNome(cliente.getNome());
-		return clienteRespository.save(resultado);
+	public Cliente update(Cliente Cliente) {
+		find(Cliente.getId());
+		return clienteRespository.save(Cliente);
 	}
 
 	public void delete(Integer id) {

@@ -33,9 +33,16 @@ public class ClienteService {
 	
 	public Cliente update(Cliente cliente) {
 		Cliente resultado = find(cliente.getId());
+		
+		resultado.setCpfCnpj(cliente.getCpfCnpj());
 		resultado.setEmail(cliente.getEmail());
+		resultado.setEnderecos(cliente.getEnderecos());
 		resultado.setNome(cliente.getNome());
-		return clienteRespository.save(resultado);
+		resultado.setPedidos(cliente.getPedidos());
+		resultado.setTelefones(cliente.getTelefones());
+		resultado.setTipo(cliente.getTipo());
+		
+		return clienteRespository.save(cliente);
 	}
 
 	public void delete(Integer id) {

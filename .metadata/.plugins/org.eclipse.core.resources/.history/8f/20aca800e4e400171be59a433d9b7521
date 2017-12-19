@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.springmc.domain.Cliente;
 import br.com.springmc.dto.ClienteDTO;
-import br.com.springmc.services.ClienteService;
+import br.com.springmc.services.clienteService;
 
 @RestController
 @RequestMapping("/clientes")

@@ -33,6 +33,7 @@ public class ClienteService {
 	
 	public Cliente update(Cliente cliente) {
 		Cliente resultado = find(cliente.getId());
+		
 		resultado.setEmail(cliente.getEmail());
 		resultado.setNome(cliente.getNome());
 		return clienteRespository.save(resultado);

@@ -16,9 +16,9 @@ public class ClienteNegocioException extends RuntimeException{
 		super(msg, cause);
 	}
 
-	public ClienteNegocioException(String msg, HttpStatus httpStatus) {
+	public ClienteNegocioException(String string, HttpStatus badRequest) {
 		super(msg);
-		this.httpStatus = httpStatus;
+		this.httpStatus = badRequest;
 	}
 
 	public HttpStatus getHttpStatus() {

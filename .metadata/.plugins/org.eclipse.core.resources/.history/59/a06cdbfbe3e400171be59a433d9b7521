@@ -36,21 +36,21 @@ public class ClienteController {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO dto, @PathVariable Integer id) {
-		Cliente Cliente = clienteService.fromDTO(dto);
+		Cliente Cliente = ClienteService.fromDTO(dto);
 		Cliente.setId(id);
-		clienteService.update(Cliente);
+		ClienteService.update(Cliente);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		clienteService.delete(id);
+		ClienteService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
-		List<Cliente> Clientes = clienteService.findAll();
+		List<Cliente> Clientes = ClienteService.findAll();
 		List<ClienteDTO> dto = Clientes.stream().map(c -> new ClienteDTO(c)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(dto);
 	}
@@ -62,7 +62,7 @@ public class ClienteController {
 			@RequestParam(value="orderBy", defaultValue="nome")String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC")String direction) {
 		
-		Page<Cliente> Clientes = clienteService.findPage(page, linesPerPage, orderBy, direction);
+		Page<Cliente> Clientes = ClienteService.findPage(page, linesPerPage, orderBy, direction);
 		Page<ClienteDTO> dto = Clientes.map(c -> new ClienteDTO(c));
 		return ResponseEntity.ok().body(dto);
 	}
