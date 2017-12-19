@@ -1,5 +1,6 @@
 package br.com.springmc;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,22 @@ import br.com.springmc.domain.Cidade;
 import br.com.springmc.domain.Cliente;
 import br.com.springmc.domain.Endereco;
 import br.com.springmc.domain.Estado;
+import br.com.springmc.domain.ItemPedido;
+import br.com.springmc.domain.Pagamento;
+import br.com.springmc.domain.PagamentoComBoleto;
+import br.com.springmc.domain.PagamentoComCartao;
+import br.com.springmc.domain.Pedido;
 import br.com.springmc.domain.Produto;
+import br.com.springmc.domain.enums.EstadoPagamento;
 import br.com.springmc.domain.enums.TipoCliente;
 import br.com.springmc.repositories.CategoriaRepository;
 import br.com.springmc.repositories.CidadeRepository;
 import br.com.springmc.repositories.ClienteRepository;
 import br.com.springmc.repositories.EnderecoRepository;
 import br.com.springmc.repositories.EstadoRepository;
+import br.com.springmc.repositories.ItemPedidoRepository;
+import br.com.springmc.repositories.PagamentoRepository;
+import br.com.springmc.repositories.PedidoRepository;
 import br.com.springmc.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -41,6 +51,15 @@ public class SpringmcApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringmcApplication.class, args);
@@ -91,6 +110,32 @@ public class SpringmcApplication implements CommandLineRunner {
 		clienteRepository.save(Arrays.asList(cli));
 		enderecoRepository.save(Arrays.asList(e1,e2));
 		
+		Pedido ped1 = new Pedido(null, LocalDate.now(), cli, e1);
+		Pedido ped2 = new Pedido(null, LocalDate.now(), cli, e2);
+		
+		Pagamento pag1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
+		ped1.setPagamento(pag1);
+		
+		Pagamento pag2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, LocalDate.now(), LocalDate.now());
+		ped2.setPagamento(pag2);
+		
+		cli.getPedidos().addAll(Arrays.asList(ped1,ped2));
+		
+		pedidoRepository.save(Arrays.asList(ped1,ped2));
+		pagamentoRepository.save(Arrays.asList(pag1,pag2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, produto1, 0.0, 1, 2000.0);
+		ItemPedido ip2 = new ItemPedido(ped1, produto3, 0.0, 2, 80.0);
+		ItemPedido ip3 = new ItemPedido(ped2, produto2, 100.0, 1, 800.0);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1,ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		produto1.getItens().addAll(Arrays.asList(ip1));
+		produto2.getItens().addAll(Arrays.asList(ip3));
+		produto3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.save(Arrays.asList(ip1,ip2,ip3));
 		
 	}
 }

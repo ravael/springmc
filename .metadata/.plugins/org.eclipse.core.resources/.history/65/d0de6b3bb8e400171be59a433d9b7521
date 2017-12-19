@@ -1,0 +1,45 @@
+package br.com.springmc.domain;
+
+import java.io.Serializable;
+import java.time.Instant;
+import java.time.LocalDate;
+
+public class Pedido implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private LocalDate instante;
+	
+	public Pedido() {
+		
+	}
+
+	public Pedido(Integer id, LocalDate instante) {
+		super();
+		this.id = id;
+		this.instante = instante;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public LocalDate getInstante() {
+		return instante;
+	}
+
+	public void setInstante(LocalDate instante) {
+		this.instante = instante;
+	}
+
+	
+
+}

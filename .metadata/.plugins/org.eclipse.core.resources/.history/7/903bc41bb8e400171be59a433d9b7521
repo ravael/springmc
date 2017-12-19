@@ -1,0 +1,5 @@
+package br.com.springmc.domain;
+
+public class Pedido {
+
+}

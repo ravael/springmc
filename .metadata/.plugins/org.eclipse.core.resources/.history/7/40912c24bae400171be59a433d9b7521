@@ -1,0 +1,76 @@
+package br.com.springmc.domain;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+public class Pedido implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private LocalDate instante;
+	
+	private Pagamento pagamento;
+	
+	private Cliente cliente;
+	
+	private Endereco enderecoEntrega;
+	
+	public Pedido() {
+		
+	}
+
+	public Pedido(Integer id, LocalDate instante, Cliente cliente, Endereco enderecoEntrega) {
+		super();
+		this.id = id;
+		this.instante = instante;
+		this.cliente = cliente;
+		this.enderecoEntrega = enderecoEntrega;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public LocalDate getInstante() {
+		return instante;
+	}
+
+	public void setInstante(LocalDate instante) {
+		this.instante = instante;
+	}
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Endereco getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+
+	public void setEnderecoEntrega(Endereco enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
+	}
+
+	
+
+}
