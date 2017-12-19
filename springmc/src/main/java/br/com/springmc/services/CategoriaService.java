@@ -36,8 +36,9 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria categoria) {
-		find(categoria.getId());
-		return categoriaRespository.save(categoria);
+		Categoria resultado = find(categoria.getId());
+		resultado.setNome(categoria.getNome());
+		return categoriaRespository.save(resultado);
 	}
 
 	public void delete(Integer id) {
