@@ -20,7 +20,7 @@ public class CategoriaController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		
-		Categoria categoria = categoriaService.buscaCategoria(id);
+		Categoria categoria = categoriaService.listaCategorio(id);
 		
 		return ResponseEntity.ok().body(categoria);
 	}
