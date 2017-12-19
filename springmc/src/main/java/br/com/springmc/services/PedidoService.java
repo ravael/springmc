@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.springmc.domain.Pedido;
 import br.com.springmc.repositories.PedidoRepository;
-import br.com.springmc.services.exception.PedidoException;
+import br.com.springmc.services.exception.PedidoNegocioException;
 
 @Service
 public class PedidoService {
@@ -17,7 +17,7 @@ public class PedidoService {
 		Pedido pedido = pedidoRepository.findOne(idPedido);
 		
 		if(pedido == null) {
-			throw new PedidoException("Pedido não encontrada");
+			throw new PedidoNegocioException("Pedido não encontrada.");
 		}
 		return pedido;
 	}

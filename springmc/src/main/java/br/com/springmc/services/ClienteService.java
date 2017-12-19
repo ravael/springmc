@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.springmc.domain.Cliente;
 import br.com.springmc.repositories.ClienteRepository;
-import br.com.springmc.services.exception.ClienteException;
+import br.com.springmc.services.exception.ClienteNegocioException;
 
 @Service
 public class ClienteService {
@@ -17,7 +17,7 @@ public class ClienteService {
 		Cliente cliente = clienteRespository.findOne(idCliente);
 		
 		if(cliente == null) {
-			throw new ClienteException("Cliente não encontrada");
+			throw new ClienteNegocioException("Cliente não encontrada.");
 		}
 		return cliente;
 	}

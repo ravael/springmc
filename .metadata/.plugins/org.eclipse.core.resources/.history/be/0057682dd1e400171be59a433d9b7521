@@ -1,0 +1,14 @@
+package br.com.springmc.services.exception;
+
+public class PedidoNegocioException extends RuntimeException {
+
+private static final long serialVersionUID = 1L;
+	
+	public PedidoNegocioException(String msg) {
+		super(msg);
+	}
+	
+	public PedidoNegocioException(String msg, Throwable cause) {
+		super(msg, cause);
+	}
+}

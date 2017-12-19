@@ -1,0 +1,15 @@
+package br.com.springmc.services.exception;
+
+public class CategoriaNegocioException extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
+	
+	public CategoriaNegocioException(String msg) {
+		super(msg);
+	}
+	
+	public CategoriaNegocioException(String msg, Throwable cause) {
+		super(msg, cause);
+	}
+
+}

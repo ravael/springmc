@@ -19,3 +19,6 @@
 1513696074690	Rename method 'buscaCategoria'
 1513696172543	Rename method 'buscaCliente'
 1513696180236	Rename method 'buscaPedido'
+1513696779280	Rename type 'CategoriaException'
+1513696786545	Rename type 'ClienteException'
+1513696791654	Rename type 'PedidoException'
