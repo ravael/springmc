@@ -13,7 +13,7 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository categoriaRespository;
 	
-	public Categoria find(Integer idCategoria) {
+	public Categoria buscaCategoria(Integer idCategoria) {
 		Categoria categoria = categoriaRespository.findOne(idCategoria);
 		
 		if(categoria == null) {
@@ -27,8 +27,8 @@ public class CategoriaService {
 		return categoriaRespository.save(categoria);
 	}
 
-	public Categoria update(Categoria categoria) {
-		find(categoria.getId());
-		return categoriaRespository.save(categoria);
+	public void update(Categoria categoria) {
+		categoriaRespository.save(categoria;)
+		
 	}
 }

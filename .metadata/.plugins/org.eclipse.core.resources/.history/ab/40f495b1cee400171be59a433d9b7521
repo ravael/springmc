@@ -2,6 +2,7 @@ package br.com.springmc.controller;
 
 import java.net.URI;
 
+import org.apache.catalina.startup.Catalina;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ public class CategoriaController {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
+		
 		Categoria categoria = categoriaService.find(id);
 		
 		return ResponseEntity.ok().body(categoria);

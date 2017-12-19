@@ -13,7 +13,7 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository clienteRespository;
 	
-	public Cliente find(Integer idCliente) {
+	public Cliente buscaCliente(Integer idCliente) {
 		Cliente cliente = clienteRespository.findOne(idCliente);
 		
 		if(cliente == null) {

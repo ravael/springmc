@@ -13,7 +13,7 @@ public class PedidoService {
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
-	public Pedido find(Integer idPedido) {
+	public Pedido buscaPedido(Integer idPedido) {
 		Pedido pedido = pedidoRepository.findOne(idPedido);
 		
 		if(pedido == null) {
