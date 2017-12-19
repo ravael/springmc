@@ -1,0 +1,24 @@
+package br.com.springmc.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.springmc.domain.Pedido;
+import br.com.springmc.repositories.PedidoRepository;
+import br.com.springmc.services.exception.ClienteException;
+
+@Service
+public class PedidoService {
+
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	public Pedido buscaCliente(Integer idPedido) {
+		Pedido cliente = pedidoRepository.findOne(idPedido);
+		
+		if(cliente == null) {
+			throw new ClienteException("Cliente não encontrada");
+		}
+		return cliente;
+	}
+}

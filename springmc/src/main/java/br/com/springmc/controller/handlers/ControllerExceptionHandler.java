@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import br.com.springmc.services.exception.CategoriaException;
 import br.com.springmc.services.exception.ClienteException;
+import br.com.springmc.services.exception.PedidoException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -20,7 +21,6 @@ public class ControllerExceptionHandler {
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 		
-		
 	}
 	
 	@ExceptionHandler(ClienteException.class)
@@ -30,6 +30,14 @@ public class ControllerExceptionHandler {
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 		
+	}
+	
+	@ExceptionHandler(PedidoException.class)
+	public ResponseEntity<StandardError> pedidoNotFound(ClienteException exception, HttpServletRequest request){
+		
+		StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(),exception.getMessage(),System.currentTimeMillis());
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 		
 	}
 }
