@@ -1,0 +1,10 @@
+package br.com.springmc.dto;
+
+import java.io.Serializable;
+
+public class CategoriaDTO implements Serializable{
+
+	private Integer id;
+	private String nome;
+	
+}

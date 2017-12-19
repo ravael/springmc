@@ -1,7 +1,5 @@
 package br.com.springmc.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -43,11 +41,6 @@ public class CategoriaService {
 		}catch (DataIntegrityViolationException e) {
 			throw new CategoriaNegocioException("Não é possível excluir uma categoria que possui produtos.", HttpStatus.BAD_REQUEST);
 		}
-		
-	}
-
-	public List<Categoria> findAll() {
-		return categoriaRespository.findAll();
 		
 	}
 }

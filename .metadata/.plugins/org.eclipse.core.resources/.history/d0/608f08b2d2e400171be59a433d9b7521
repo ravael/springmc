@@ -47,7 +47,8 @@ public class CategoriaService {
 	}
 
 	public List<Categoria> findAll() {
-		return categoriaRespository.findAll();
+		return null;
+		// TODO Auto-generated method stub
 		
 	}
 }

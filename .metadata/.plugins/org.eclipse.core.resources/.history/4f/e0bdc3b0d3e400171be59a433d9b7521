@@ -56,7 +56,9 @@ public class CategoriaController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<CategoriaDTO>> findAll() {
 		List<Categoria> categorias = categoriaService.findAll();
+		
 		List<CategoriaDTO> dto = categorias.stream().map(c -> new CategoriaDTO(c)).collect(Collectors.toList());
+		
 		return ResponseEntity.ok().body(dto);
 	}
 }

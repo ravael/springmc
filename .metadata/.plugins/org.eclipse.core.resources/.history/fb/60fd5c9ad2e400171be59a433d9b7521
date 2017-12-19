@@ -1,7 +1,5 @@
 package br.com.springmc.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -47,7 +45,7 @@ public class CategoriaService {
 	}
 
 	public List<Categoria> findAll() {
-		return categoriaRespository.findAll();
+		// TODO Auto-generated method stub
 		
 	}
 }
