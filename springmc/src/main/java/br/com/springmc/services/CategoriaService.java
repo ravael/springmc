@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import br.com.springmc.domain.Categoria;
+import br.com.springmc.dto.CategoriaDTO;
 import br.com.springmc.repositories.CategoriaRepository;
 import br.com.springmc.services.exception.CategoriaNegocioException;
 
@@ -57,5 +58,9 @@ public class CategoriaService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
 		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return categoriaRespository.findAll(pageRequest);
+	}
+
+	public Categoria fromDTO(CategoriaDTO dto) {
+		return new Categoria(dto.getId(), dto.getNome());
 	}
 }

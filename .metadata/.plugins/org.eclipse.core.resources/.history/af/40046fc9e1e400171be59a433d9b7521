@@ -1,0 +1,15 @@
+package br.com.springmc.controller.handlers;
+
+public class ValidationError extends StandardError{
+
+	public ValidationError(Integer status, String msg, Long time) {
+		super(status, msg, time);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+}
