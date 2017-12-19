@@ -1,5 +1,6 @@
 package br.com.springmc.controller;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.springmc.domain.Cliente;
 import br.com.springmc.dto.ClienteDTO;
+import br.com.springmc.dto.ClienteNewDTO;
 import br.com.springmc.services.ClienteService;
 
 @RestController
@@ -66,5 +69,15 @@ public class ClienteController {
 		Page<ClienteDTO> dto = Clientes.map(c -> new ClienteDTO(c));
 		return ResponseEntity.ok().body(dto);
 	}
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody ClienteNewDTO dto) {
+		Cliente cliente = clienteService.fromDTO(dto);
+		clienteService.insert(cliente);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(cliente.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+	
 
 }
