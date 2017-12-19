@@ -29,7 +29,7 @@ public class CategoriaController {
 		return ResponseEntity.ok().body(categoria);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Categoria categoria) {
 		categoria = categoriaService.insert(categoria);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

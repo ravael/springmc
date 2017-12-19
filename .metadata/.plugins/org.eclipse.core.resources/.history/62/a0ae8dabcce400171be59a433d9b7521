@@ -23,7 +23,7 @@ public class CategoriaService {
 	}
 
 	public Categoria insert(Categoria categoria) {
-		categoria.setId(null);
-		return categoriaRespository.save(categoria);
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

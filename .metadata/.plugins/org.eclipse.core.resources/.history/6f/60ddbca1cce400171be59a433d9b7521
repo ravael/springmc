@@ -21,9 +21,4 @@ public class CategoriaService {
 		}
 		return categoria;
 	}
-
-	public Categoria insert(Categoria categoria) {
-		categoria.setId(null);
-		return categoriaRespository.save(categoria);
-	}
 }
