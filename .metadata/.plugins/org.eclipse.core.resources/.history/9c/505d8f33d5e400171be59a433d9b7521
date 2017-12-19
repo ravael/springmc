@@ -69,8 +69,8 @@ public class CategoriaController {
 			@RequestParam(value="orderBy", defaultValue="nome")String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC")String direction) {
 		
-		Page<Categoria> categorias = categoriaService.findPage(page, linesPerPage, orderBy, direction);
-		Page<CategoriaDTO> dto = categorias.map(c -> new CategoriaDTO(c));
+		List<Categoria> categorias = categoriaService.findAll();
+		List<CategoriaDTO> dto = categorias.stream().map(c -> new CategoriaDTO(c)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(dto);
 	}
 }

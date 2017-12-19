@@ -87,7 +87,7 @@ public class SpringmcApplication implements CommandLineRunner {
 		produto3.getCategorias().addAll(Arrays.asList(categoria1));
 		
 		
-		categoriaRepository.save(Arrays.asList(categoria1,categoria2,categoria3,categoria4,categoria5,categoria6,categoria7));
+		categoriaRepository.save(Arrays.asList(categoria1,categoria2));
 		produtoRepository.save(Arrays.asList(produto1,produto2,produto3));
 		
 
