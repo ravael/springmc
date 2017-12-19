@@ -19,6 +19,6 @@ public class CategoriaService {
 		if(categoria == null) {
 			throw new CategoriaException("Categoria não encontrada");
 		}
-		return categoriaRespository.findOne(idCategoria);
+		return categoria;
 	}
 }
