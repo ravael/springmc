@@ -1,5 +1,6 @@
 package br.com.springmc;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -121,7 +122,9 @@ public class SpringmcApplication implements CommandLineRunner {
 		Pagamento pag1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
 		ped1.setPagamento(pag1);
 		
-		Pagamento pag2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, LocalDate.now(), LocalDate.now());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Pagamento pag2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("12/02/1991"), sdf.parse("12/02/1991"));
 		ped2.setPagamento(pag2);
 		
 		cli.getPedidos().addAll(Arrays.asList(ped1,ped2));
