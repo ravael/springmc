@@ -39,9 +39,9 @@ public class ClienteController {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO dto, @PathVariable Integer id) {
-		Cliente Cliente = clienteService.fromDTO(dto);
-		Cliente.setId(id);
-		clienteService.update(Cliente);
+		Cliente cliente = clienteService.fromDTO(dto);
+		cliente.setId(id);
+		clienteService.update(cliente);
 		return ResponseEntity.noContent().build();
 	}
 	
@@ -53,8 +53,8 @@ public class ClienteController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
-		List<Cliente> Clientes = clienteService.findAll();
-		List<ClienteDTO> dto = Clientes.stream().map(c -> new ClienteDTO(c)).collect(Collectors.toList());
+		List<Cliente> cliente = clienteService.findAll();
+		List<ClienteDTO> dto = cliente.stream().map(c -> new ClienteDTO(c)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(dto);
 	}
 	
@@ -62,16 +62,16 @@ public class ClienteController {
 	public ResponseEntity<Page<ClienteDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0")Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue="24")Integer linesPerPage, 
-			@RequestParam(value="orderBy", defaultValue="nome")String orderBy, 
+			@RequestParam(value="orderBy", defaultValue="orderBy")String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC")String direction) {
 		
-		Page<Cliente> Clientes = clienteService.findPage(page, linesPerPage, orderBy, direction);
-		Page<ClienteDTO> dto = Clientes.map(c -> new ClienteDTO(c));
+		Page<Cliente> cliente = clienteService.findPage(page, linesPerPage, orderBy, direction);
+		Page<ClienteDTO> dto = cliente.map(c -> new ClienteDTO(c));
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody ClienteNewDTO dto) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO dto) {
 		Cliente cliente = clienteService.fromDTO(dto);
 		clienteService.insert(cliente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

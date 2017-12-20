@@ -2,6 +2,13 @@ package br.com.springmc.dto;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.com.springmc.services.validation.ClienteValidationCustom;
+
+@ClienteValidationCustom
 public class ClienteNewDTO implements Serializable{
 
 	/**
@@ -10,17 +17,32 @@ public class ClienteNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private String nome;
-	private String email;
-	private String cpfCnpj;
-	private Integer tipo;
 	
+	@NotEmpty(message="nome obrigatório")
+	@Length(min=5, max=120, message="tamanho entre 5 e 120 caracter")
+	private String nome;
+	
+	@NotEmpty(message="email obrigatório")
+	@Email(message="email inválido")
+	private String email;
+	
+	@NotEmpty(message="Campo obrigatório")
+	private String cpfCnpj;
+	
+	private Integer tipo;
+
+	@NotEmpty(message="Campo obrigatório")
 	private String logradouro;
+	
+	@NotEmpty(message="Campo obrigatório")
 	private String numero;
 	private String complemento;
 	private String bairro;
+
+	@NotEmpty(message="Campo obrigatório")
 	private String cep;
 	
+	@NotEmpty(message="Campo obrigatório")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
