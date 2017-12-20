@@ -6,9 +6,9 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import br.com.springmc.services.validation.ClienteValidationCustom;
+import br.com.springmc.services.validation.ClienteValidationInsertCustom;
 
-@ClienteValidationCustom
+@ClienteValidationInsertCustom
 public class ClienteNewDTO implements Serializable{
 
 	/**

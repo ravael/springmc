@@ -6,15 +6,22 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import br.com.springmc.controller.handlers.FieldMessage;
+import br.com.springmc.domain.Cliente;
 import br.com.springmc.domain.enums.TipoCliente;
 import br.com.springmc.dto.ClienteNewDTO;
+import br.com.springmc.repositories.ClienteRepository;
 import br.com.springmc.services.validation.utils.BR;
 
-public class ClienteValidador implements ConstraintValidator<ClienteValidationCustom, ClienteNewDTO>{
+public class ClienteValidadorInsert implements ConstraintValidator<ClienteValidationInsertCustom, ClienteNewDTO>{
 
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
 	@Override
-	public void initialize(ClienteValidationCustom arg0) {
+	public void initialize(ClienteValidationInsertCustom arg0) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,6 +36,11 @@ public class ClienteValidador implements ConstraintValidator<ClienteValidationCu
 		
 		if(dto.getTipo().equals(TipoCliente.PESSOAJURIDICA.getCodigo()) && !BR.isValidCNPJ(dto.getCpfCnpj())) {
 			messages.add(new FieldMessage("cpfCnpj", "CNPJ inválido"));
+		}
+		
+		Cliente aux = clienteRepository.findByEmail(dto.getEmail());
+		if(aux != null) {
+			messages.add(new FieldMessage("Email", "Email já cadastrado"));
 		}
 		
 		for (FieldMessage fieldMessage : messages) {
