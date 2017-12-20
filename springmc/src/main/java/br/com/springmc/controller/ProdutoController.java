@@ -26,15 +26,14 @@ public class ProdutoController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Produto> find(@PathVariable Integer id) {
 
-		// Produto cliente = produtoService.find(id);
+		Produto produto = produtoService.find(id);
 
-		// return ResponseEntity.ok().body(cliente);
-		return null;
+		 return ResponseEntity.ok().body(produto);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Page<ProdutoDTO>> findPage(@RequestParam(value = "nome", defaultValue = "") String nome,
-			@RequestParam(value = "categorias", defaultValue = "") String categorias,
+			@RequestParam(value = "categorias", defaultValue = "-1") String categorias,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
 			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy,

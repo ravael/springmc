@@ -1,7 +1,7 @@
 package br.com.springmc.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +26,7 @@ public class Pedido implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private LocalDate instante;
+	private Date instante;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy="pedido")
 	private Pagamento pagamento;
@@ -46,10 +46,10 @@ public class Pedido implements Serializable {
 		
 	}
 
-	public Pedido(Integer id, LocalDate instante, Cliente cliente, Endereco enderecoEntrega) {
+	public Pedido(Integer id, Date date, Cliente cliente, Endereco enderecoEntrega) {
 		super();
 		this.id = id;
-		this.instante = instante;
+		this.instante = date;
 		this.cliente = cliente;
 		this.enderecoEntrega = enderecoEntrega;
 	}
@@ -62,11 +62,11 @@ public class Pedido implements Serializable {
 		this.id = id;
 	}
 
-	public LocalDate getInstante() {
+	public Date getInstante() {
 		return instante;
 	}
 
-	public void setInstante(LocalDate instante) {
+	public void setInstante(Date instante) {
 		this.instante = instante;
 	}
 
