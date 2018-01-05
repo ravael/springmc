@@ -1,7 +1,0 @@
-package br.com.springmc.controller.handlers;
-
-import java.io.Serializable;
-
-public class FieldMessage implements Serializable{
-
-}

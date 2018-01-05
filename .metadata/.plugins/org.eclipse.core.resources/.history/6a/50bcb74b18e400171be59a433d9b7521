@@ -1,7 +1,0 @@
-package br.com.springmc.controller;
-
-
-@RestController
-public class CategoriaController {
-
-}

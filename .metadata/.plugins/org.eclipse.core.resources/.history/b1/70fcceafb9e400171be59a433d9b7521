@@ -1,7 +1,0 @@
-package br.com.springmc.domain;
-
-public class PagamentoComCartao extends Pagamento{
-
-	
-	private Integer numeroParcelas;
-}

@@ -1,7 +1,0 @@
-package br.com.springmc.domain;
-
-import java.io.Serializable;
-
-public class Produto implements Serializable{
-
-}

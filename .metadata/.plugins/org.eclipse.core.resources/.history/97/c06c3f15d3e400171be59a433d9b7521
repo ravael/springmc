@@ -1,8 +1,0 @@
-package br.com.springmc.dto;
-
-public class CategoriaDTO {
-
-	private Integer id;
-	private String nome;
-	
-}

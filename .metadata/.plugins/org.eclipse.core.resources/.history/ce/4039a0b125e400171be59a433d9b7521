@@ -1,5 +1,0 @@
-package br.com.springmc.services.exception;
-
-public class CategoriaException {
-
-}
